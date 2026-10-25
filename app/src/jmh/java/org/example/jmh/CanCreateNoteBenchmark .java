@@ -1,6 +1,6 @@
 package org.example.jmh;
 
-import org.example.GreetingGenerator;
+import org.example.App;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.annotations.Warmup;
@@ -12,12 +12,11 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 @Fork(value = 1, warmups = 2)
 @Warmup(iterations = 2)
-public class SampleBenchmark {
+public class CanCreateNoteBenchmark {
   @Benchmark
-  @Timeout(time = 5, timeUnit = TimeUnit.SECONDS)
-  public void sayHelloBenchmark(Blackhole bh) {
-      GreetingGenerator generator = new GreetingGenerator();
-      String output = generator.sayHello();
-      bh.consume(output);
+  @Timeout(time = 5, timeUnit = TimeUnit.NANOSECONDS)
+  public void canCreateNoteBenchmark(Blackhole bh) {
+      
+    bh.consume(output);
   }
 }
